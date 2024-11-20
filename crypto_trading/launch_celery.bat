@@ -1,0 +1,1 @@
+call celery -A crypto_trading.celery_config worker --pool=solo -l info

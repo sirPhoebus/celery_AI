@@ -1,7 +1,17 @@
-# Run `python main.py` in the terminal
+from crypto_trading.celery_config import celery_app
+from crypto_trading.tasks import update_market_data, analyze_market, execute_trades
+from celery import chain
+import time
 
-# Note: Python is lazy loaded so the first run will take a moment,
-# But after cached, subsequent loads are super fast! ⚡️
+def main():
+    while True:
+        workflow = chain(
+            update_market_data.s(),
+            analyze_market.s(),
+            execute_trades.s()
+        )
+        workflow.apply_async()
+        time.sleep(10)  # in seconds
 
-import platform
-print(f"Hello Python v{platform.python_version()}!")
+if __name__ == '__main__':
+    main()
