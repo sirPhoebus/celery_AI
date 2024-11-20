@@ -1,3 +1,5 @@
-# celery_AI
+redis-cli
+> KEYS *    # Shows all Redis keys
+> LLEN celery  # Shows number of pending tasks
 
-[Edit in StackBlitz next generation editor ⚡️](https://stackblitz.com/~/github.com/sirPhoebus/celery_AI)
+docker-compose down && docker-compose up --build

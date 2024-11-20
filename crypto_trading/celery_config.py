@@ -1,9 +1,10 @@
 import os
 from celery import Celery
 
+# Use the Redis service name from docker-compose as the hostname
 celery_app = Celery('crypto_trading',
-                   broker='redis://localhost:6379/0',
-                   backend='redis://localhost:6379/0',
+                   broker='redis://redis:6379/0',
+                   backend='redis://redis:6379/0',
                    include=['crypto_trading.tasks'])
 
 celery_app.conf.update(

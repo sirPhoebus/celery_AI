@@ -1,1 +1,4 @@
-/crypto_trading/__pycache__/
+.env
+__pycache__/
+*.pyc
+.DS_Store
